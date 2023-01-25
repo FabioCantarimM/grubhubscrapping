@@ -1,13 +1,26 @@
 import requests
 import json
+from validators import url
 from entity.Restaurant import Restaurant
 
-class GrubHub: 
+class GrubHubCrawler: 
 
-    def __init__() -> None:
-        pass
+    def __init__(self, url: str):
+        self.url = url
 
-    def getAuth():
+    def execute(self):
+        storeId = self.getIdFromUrl()
+        auth = self.getAuth()
+        return self.getData(storeId, auth)
+
+    def getIdFromUrl(self):
+        isValidUrl = url(self.url);
+        if not isValidUrl:
+            raise ValueError('Invalid Url')
+        storeId = self.url.split('/')
+        return storeId[5]
+
+    def getAuth(self):
         url = 'https://api-gtm.grubhub.com/auth'
 
         payload = json.dumps({
@@ -41,7 +54,7 @@ class GrubHub:
 
         return req['session_handle']['access_token']
     
-    def getData( storeId:int, auth:str):
+    def getData( self, storeId:int, auth:str):
         url= f'https://api-gtm.grubhub.com/restaurants/{storeId}?version=4&variationId=rtpFreeItems&orderType=standard&locationMode=delivery'
 
         headers = {
