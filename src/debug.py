@@ -86,10 +86,3 @@ testEvent = {
 }
 
 lambda_handler(testEvent,'' )
-
-
-# ghcrawler = GrubHub
-# auth = ghcrawler.getAuth()
-# store = ghcrawler.getData(storeId, auth) 
-# print(store.watch());
-# 

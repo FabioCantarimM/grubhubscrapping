@@ -8,9 +8,9 @@ class Restaurant:
 
     def toJson(self):
         return {
-            "infos": self.__infos,
-            "Menu": self.__menu,
-            "Options": self.__options
+            "info": self.__infos,
+            "menu": self.__menu,
+            "option": self.__options
         }
 
     def watch(self):

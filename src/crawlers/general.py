@@ -9,9 +9,7 @@ class GeneralCrawler:
     def find_crawler(self, name: str, url: str) -> Restaurant:
         do = f"crawler_{name}"
         if hasattr(self, do) and callable(func := getattr(self, do)):
-            func(url)
+            return func(url)
 
     def crawler_GrubHub(self, url):
-        result = GrubHubCrawler(url).execute()
-        print(result)
-        return result
+        return GrubHubCrawler(url).execute()

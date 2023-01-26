@@ -76,16 +76,16 @@ class GrubHubCrawler:
         }
         
         req = requests.request('GET', url, headers=headers).json()
-
+        si = req['restaurant']
         storeInfos = {
-            'storeId': req['restaurant']['id'],
-            'name': req['restaurant']['name'],
-            'address': req['restaurant']['address']['street_address'],
-            'city': req['restaurant']['address']['locality'],
-            'state': req['restaurant']['address']['region'],
-            'category': req['restaurant']['cuisines'],
-            'stars': req['restaurant']['rating']['rating_value'],
-            'review_count': req['restaurant']['rating']['rating_count'],
+            'storeId': si.get('id', ''),
+            'name': si['name'],
+            'address': si['address'].get('street_address', ''),
+            'city': si['address'].get('locality', ''),
+            'state': si['address'].get('region', ''),
+            'category': si.get('cuisines', ''),
+            'stars': si['rating'].get('rating_value', ''),
+            'review_count': si['rating'].get('rating_count', ''),
             }
 
         menuItems = []
@@ -94,29 +94,29 @@ class GrubHubCrawler:
         for menu in req['restaurant']['menu_category_list']:
             for item in menu['menu_item_list']:
                 elem = {
-                    'id': item.get('id'),
-                    'category_name': item['menu_category_name'],
-                    'item_name': item['name'],
-                    'item_description': item['description'],
-                    'item_price': item['price']['amount'],
+                    'id': item.get('id', ''),
+                    'category_name': item.get('menu_category_name',''),
+                    'item_name': item.get('name', '').replace('\r\n', ' '),
+                    'item_description': item.get('description', '').replace('\r\n', ' '),
+                    'item_price': item['price'].get('amount','0'),
                 }
                 menuItems.append(elem)
                 for choice in item['choice_category_list']:
                     options = []
                     for option in choice['choice_option_list']:
                         item = {
-                            'option_name': option['description'],
-                            'option_price': option['price']['amount']
+                            'option_name': option.get('description',''),
+                            'option_price': option['price'].get('amount','0')
                         }
                         options.append(item)
                     choice = {
-                        'product_id': elem['id'],
-                        'modifier_id': choice['id'],
-                        'group_name': choice['name'],
-                        'modifier_min': choice['min_choice_options'],
-                        'modifier_max': choice['max_choice_options'],
+                        'product_id': elem.get('id',''),
+                        'modifier_id': choice.get('id',''),
+                        'group_name': choice.get('name',''),
+                        'modifier_min': choice.get('min_choice_options',''),
+                        'modifier_max': choice.get('max_choice_options', ''),
                         'options': options
                     }
                     menuSubItems.append(choice)
                     
-        return Restaurant(storeInfos, menuItems, menuSubItems)
+        return Restaurant(storeInfos, menuItems, menuSubItems).toJson()
