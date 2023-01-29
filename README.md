@@ -50,10 +50,10 @@ See also
 <!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
 
 ---
-# project_name
+# Example of Crawler - Using AWS environment
 
-[![codecov](https://codecov.io/gh/author_name/project_urlname/branch/main/graph/badge.svg?token=project_urlname_token_here)](https://codecov.io/gh/author_name/project_urlname)
-[![CI](https://github.com/author_name/project_urlname/actions/workflows/main.yml/badge.svg)](https://github.com/author_name/project_urlname/actions/workflows/main.yml)
+[![gitHub](https://github.com/FabioCantarimM/webscrapping)](https://github.com/FabioCantarimM/webscrapping)
+[![LinkedIn](https://www.linkedin.com/in/fabiocmelo/)](https://www.linkedin.com/in/fabiocmelo/)
 
 project_description
 

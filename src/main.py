@@ -11,7 +11,7 @@ import json
 #todo: SEND MESSAGE TO NEXT STEP - X
 
 def lambda_handler(event, context):
-  messages = [];
+  messages = []
   for message in event["Records"]:
       messages.append({
           "receiptHandle": message['receiptHandle'],
