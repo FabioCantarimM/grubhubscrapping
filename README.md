@@ -1,11 +1,3 @@
-# Python Project Template
-
-A low dependency and really simple to start project template for Python Projects.
-
-See also 
-- [Flask-Project-Template](https://github.com/rochacbruno/flask-project-template/) for a full feature Flask project including database, API, admin interface, etc.
-- [FastAPI-Project-Template](https://github.com/rochacbruno/fastapi-project-template/) The base to start an openapi project featuring: SQLModel, Typer, FastAPI, JWT Token Auth, Interactive Shell, Management Commands.
-
 ### HOW TO USE THIS TEMPLATE
 
 > **DO NOT FORK** this is meant to be used from **[Use this template](https://github.com/rochacbruno/python-project-template/generate)** feature.
@@ -52,10 +44,20 @@ See also
 ---
 # Example of Crawler - Using AWS environment
 
-[![Card](https://img.shields.io/badge/cards%20estrelas%20-%23323330.svg?&style=for-the-badge&logo=cards%20estrelas&logoColor=black&color=FFB800)](https://github.com/FabioCantarimM/webscrapping)
+[![Card](https://img.shields.io/badge/Git%20Hub%20-%23323330.svg?&style=for-the-badge&logo=cards%20estrelas&logoColor=black&color=FFB800)](https://github.com/FabioCantarimM/webscrapping)
 [![Badge](https://img.shields.io/badge/badges%20-%23323330.svg?&style=for-the-badge&logo=badges&logoColor=black&color=006DEC)](https://www.linkedin.com/in/fabiocmelo/)
 
-project_description
+An example of web scraping collecting data from GrubHub, using AWS environment, receiving Lambda trigger from AWS SQS, and saving data into AWS S3; It could work in a production environment, but it needs a little more enforce to turn generic the way to extract data from JSON and send alerts when schema changes.
+
+## ✅ TODO
+
+Refact Extract Function - The solution could easily collect data from a new schema by using a dictionary of rules pattern.
+
+## AWS Architecture
+
+- AWS SQS
+- AWS Lambda
+- AWS S3
 
 ## Install it from PyPI
 
