@@ -3,6 +3,13 @@ from tools.AWS.sqs import Queue
 from tools.CSV.csv import createFile
 import json
 
+#todo: START FROMA LAMBDA TRIGGER - DONE
+#todo: GET DATA FPOM GRUBHUB - DONE
+#todo: CONVERT DATA INTO A DICT - DONE
+#todo: CREATE FILE - DONE
+#todo: UPLOAD INTO S3 - X
+#todo: SEND MESSAGE TO NEXT STEP - X
+
 def lambda_handler(event, context):
   messages = [];
   for message in event["Records"]:
