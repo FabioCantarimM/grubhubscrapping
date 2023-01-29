@@ -3,7 +3,7 @@
 [![Card](https://img.shields.io/badge/Git%20Hub%20-%23323330.svg?&style=for-the-badge&logo=cards%20estrelas&logoColor=black&color=FFB800)](https://github.com/FabioCantarimM/webscrapping)
 [![Badge](https://img.shields.io/badge/LinkedIn%20-%23323330.svg?&style=for-the-badge&logo=badges&logoColor=black&color=006DEC)](https://www.linkedin.com/in/fabiocmelo/)
 
-An example of web scraping collecting data from GrubHub, using AWS environment, receiving Lambda trigger from AWS SQS, and saving data into AWS S3; It could work in a production environment, but it needs a little more enforce to turn generic the way to extract data from JSON and send alerts when schema changes.
+An example of web scraping collecting data from GrubHub, using AWS environment, by receiving Lambda trigger from AWS SQS, and saving CSVs into AWS S3; It could work in a production environment, but it needs a little more enforce to turn generic the way to extract data from JSON and send alerts when schema changes.
 
 **GrubHub** - Two steps are required to collect data from it: First, obtain Bearer Token authorization, and then collect restaurant information by using the ID included in the URL.
 
@@ -33,7 +33,7 @@ In debug.py, you can replace URLs in message bodies.
 python src/debug.py
 ```
 
-## MESSAGE EXAMPLE
+## Message Example
 
 The message has two properties: crawler Name and store Url. The first informs what crawler will be running, and the second what store will be collected.
 
@@ -42,6 +42,21 @@ The message has two properties: crawler Name and store Url. The first informs wh
   "crawlerName":"GrubHub",
   "storeUrl":"https://www.grubhub.com/restaurant/mezeh-optimist-hall-340-e-16th-st-unit-r201-charlotte/2809951"
 }
+```
+## Files Example
+
+Every store generates two files:
+
+1 - Menu information
+
+```CSV
+  id| category_name| item_name| item_description| item_price
+```
+
+2 - Optional information
+
+```CSV
+  product_id| modifier_id| group_name| modifier_min| modifier_max|options
 ```
 
 ## Development
