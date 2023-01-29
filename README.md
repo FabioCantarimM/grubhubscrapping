@@ -13,6 +13,7 @@ Refact Extract Function - The solution could easily collect data from a new sche
 Implement Proxy -  To avoid get blocked by the service is a good practice implements a proxy system to improve performance and reduce error in high volume requests situation (16 hours of work)
 Create logging System - To keep an eye on that solution A logging solution based on AWS Opensearch could be a good option for tracking problems and creating dynamic maps to understand data and proxy problems. ( 40 hours of work)
 CD/CI - Creating a pipeline with Terraform or a GitHub action to deploy it to AWS automatically (6 hours of work)
+Test It - Create unitary tests to validate. (24 hours of work)
 
 ## 📃 AWS Architecture
 
@@ -33,7 +34,11 @@ python src/debug.py
 Create 3 Queues in AWS SQS:
 
   1 - Queue that will activate AWS Lambda
+
   2 - Error Queue to receive any unfinished tasks
+  
   3 - The following queue will receive completed tasks.
 
 Make an AWS Lambda function that calls main.lambda handler. Set the first queue as a trigger;
+
+To receive into AWS S3, create a bucket or add a folder to an existing bucket.
