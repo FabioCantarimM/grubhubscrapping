@@ -19,10 +19,12 @@ class Queue:
         return messages['Messages']
 
     def sendMessage(self, message):
-        return self.__sqs.send_message(QueueUrl= self.getQueueUrl(self.__nextQueue), MessageBody=json.dumps(message))
+        self.deleteMessage(message['receiptHandle'])
+        return self.__sqs.send_message(QueueUrl= self.getQueueUrl(self.__nextQueue), MessageBody=json.dumps(message['body']))
 
     def sendErrorMessage(self, message):
-        return self.__sqs.send_message(QueueUrl= self.getQueueUrl(self.__queueError), MessageBody=json.dumps(message))
+        self.deleteMessage(message['receiptHandle'])
+        return self.__sqs.send_message(QueueUrl= self.getQueueUrl(self.__queueError), MessageBody=json.dumps(message['body']))
 
     def deleteMessage(self, receipt_handle):
         return self.__sqs.delete_message(QueueUrl= self.getQueueUrl(self.__queue), ReceiptHandle=receipt_handle)

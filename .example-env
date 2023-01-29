@@ -1,2 +1,3 @@
 QUEUE_NAME='queue Name'
 NEXT_QUEUE_NAME='next queue Name'
+BUCKET_NAME='AWS s3 bucket name'

@@ -1,15 +1,15 @@
 from crawlers.general import GeneralCrawler
 from tools.AWS.sqs import Queue
-from tools.AWS.s3 import upload_file
+from tools.AWS.s3 import upload_files
 from tools.CSV.csv import createFile
 import json
 
-#todo: START FROMA LAMBDA TRIGGER - DONE
+#todo: START FROM LAMBDA TRIGGER - DONE
 #todo: GET DATA FROM GRUBHUB - DONE
 #todo: CONVERT DATA INTO A DICT - DONE
 #todo: CREATE FILE - DONE
-#todo: UPLOAD INTO S3 - X
-#todo: SEND MESSAGE TO NEXT STEP - X
+#todo: UPLOAD INTO S3 - DONE
+#todo: SEND MESSAGE TO NEXT STEP - DONE
 
 def lambda_handler(event, context):
   messages = []
@@ -26,7 +26,14 @@ def lambda_handler(event, context):
     url =  task["body"]["storeUrl"]
     result = crawler.find_crawler(cname,url)
     paths.append(createFile(result))
-    
-  upload_file()
-  finish = Queue().sendMessage()
-  print(paths)
+
+
+  resp = upload_files(paths)
+
+  sqs = Queue()
+  if all(resp):
+    for message in messages:
+      sqs.sendMessage(message["body"])
+  else:
+    for message in messages:
+      sqs.sendErrorMessage(message["body"])
