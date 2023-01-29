@@ -52,8 +52,8 @@ See also
 ---
 # Example of Crawler - Using AWS environment
 
-[![gitHub](https://github.com/FabioCantarimM/webscrapping)](https://github.com/FabioCantarimM/webscrapping)
-[![LinkedIn](https://www.linkedin.com/in/fabiocmelo/)](https://www.linkedin.com/in/fabiocmelo/)
+[![Card](https://img.shields.io/badge/cards%20estrelas%20-%23323330.svg?&style=for-the-badge&logo=cards%20estrelas&logoColor=black&color=FFB800)](https://github.com/FabioCantarimM/webscrapping)
+[![Badge](https://img.shields.io/badge/badges%20-%23323330.svg?&style=for-the-badge&logo=badges&logoColor=black&color=006DEC)](https://www.linkedin.com/in/fabiocmelo/)
 
 project_description
 
