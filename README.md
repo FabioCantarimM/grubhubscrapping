@@ -10,9 +10,13 @@ An example of web scraping collecting data from GrubHub, using AWS environment, 
 ## ✅ TODO
 
 Refact Extract Function - The solution could easily collect data from a new schema by using a dictionary of rules pattern. (24 hours of work)
+
 Implement Proxy -  To avoid get blocked by the service is a good practice implements a proxy system to improve performance and reduce error in high volume requests situation (16 hours of work)
+
 Create logging System - To keep an eye on that solution A logging solution based on AWS Opensearch could be a good option for tracking problems and creating dynamic maps to understand data and proxy problems. ( 40 hours of work)
+
 CD/CI - Creating a pipeline with Terraform or a GitHub action to deploy it to AWS automatically (6 hours of work)
+
 Test It - Create unitary tests to validate. (24 hours of work)
 
 ## 📃 AWS Architecture
@@ -27,6 +31,17 @@ In debug.py, you can replace URLs in message bodies.
 
 ```bash
 python src/debug.py
+```
+
+## MESSAGE EXAMPLE
+
+The message has two properties: crawler Name and store Url. The first informs what crawler will be running, and the second what store will be collected.
+
+```JSON
+{
+  "crawlerName":"GrubHub",
+  "storeUrl":"https://www.grubhub.com/restaurant/mezeh-optimist-hall-340-e-16th-st-unit-r201-charlotte/2809951"
+}
 ```
 
 ## Development
